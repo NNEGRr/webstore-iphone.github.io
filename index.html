@@ -1,0 +1,57 @@
+е этот текст, значит код работает отлично!</p>
+        </div>
+    </div>
+
+    <!-- ВКЛАДКА 2: Как поставить -->
+    <div id="howto" class="tab-content">
+        <div class="card">
+            <p>Чтобы превратить этот сайт в полноценное приложение на вашем iPhone, выполните следующие шаги:</p>
+            <ol>
+                <li>Обязательно откройте этот сайт через стандартный браузер <strong>Safari</strong>.</li>
+                <li>В нижней панели браузера нажмите на кнопку <strong>«Поделиться»</strong> (квадрат со стрелкой вверх).</li>
+                <li>Прокрутите появившееся меню немного вниз и выберите пункт <strong>«На экран "Домой"»</strong>.</li>
+                <li>При необходимости измените название приложения и нажмите кнопку <strong>«Добавить»</strong> в правом верхнем углу.</li>
+            </ol>
+            <p style="margin-top: 15px; font-size: 14px; color: #8e8e93; margin-bottom: 0;">
+                После этого на экране вашего iPhone появится иконка. Приложение будет открываться во весь экран, без адресной строки браузера.
+            </p>
+        </div>
+    </div>
+
+    <!-- Нижнее меню навигации -->
+    <nav class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('main', 'Главная', this)">
+            <span class="icon">🏠</span>
+            <span>Главная</span>
+        </button>
+        <button class="tab-btn" onclick="switchTab('howto', 'Как поставить', this)">
+            <span class="icon">📲</span>
+            <span>Как поставить</span>
+        </button>
+    </nav>
+
+    <script>
+        function switchTab(tabId, titleText, button) {
+            // Скрываем контент
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Снимаем активность с кнопок
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Показываем нужную вкладку и активируем кнопку
+            document.getElementById(tabId).classList.add('active');
+            button.classList.add('active');
+            
+            // Меняем заголовок в шапке
+            document.getElementById('header-title').innerText = titleText;
+
+            // Легкая вибрация для смартфонов
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+        }
+    </script>
+</body>
+</html>
